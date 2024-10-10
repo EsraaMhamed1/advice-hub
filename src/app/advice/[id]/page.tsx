@@ -1,4 +1,3 @@
-// pages/advice/[id].tsx
 import AdviceDetail from '@/components/AdviceDetails';
 const AdvicePage = () => {
 	return (
