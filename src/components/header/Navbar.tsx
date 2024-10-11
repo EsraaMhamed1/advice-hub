@@ -60,7 +60,7 @@ const Navbar = () => {
 							className={styles.navLink}
 							href={'/advice'}
 						>
-							Git Free Advice!
+							Get Free Advice!
 						</Link>
 						<Link
 							onClick={() => {
