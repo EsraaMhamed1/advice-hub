@@ -18,28 +18,34 @@ const AdviceDetail = () => {
 		fetchAdvice();
 	}, [id]);
 
-	const addToFavorites = () => {
+	const addToFavorites = (advice: string) => {
 		const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+		if (favorites.includes(advice)) {
+			alert('advice already exist !');
+			return;
+		}
+
 		favorites.push(advice);
 		localStorage.setItem('favorites', JSON.stringify(favorites));
-		alert('Advice added to favorites!');
+
+		alert('done 🎉');
 	};
 
 	if (!advice) return <p>Loading...</p>;
 
 	return (
-		<div className='fix-height flex  flex-col gap-10 items-center bg-purple-100'>
+		<div className='fix-height flex flex-col gap-10 items-center bg-purple-100'>
 			<h2 className='text-purple-800 font-semibold text-2xl p-16 '>
 				Selected Advice 🎉
 			</h2>
-
-			<div className=' flex flex-col lg:flex-row items-center justify-center gap-6 pb-16'>
+			<div className='flex flex-col lg:flex-row items-center justify-center gap-6 pb-16'>
 				<div className='container bg-purple-600 rounded-lg p-8 w-[90%] text-white text-lg hover:bg-purple-500'>
 					{advice}
 				</div>
 				<button
-					className='bg-purple-500 rounded-lg p-5 text-white  hover:bg-purple-600'
-					onClick={addToFavorites}
+					className='bg-purple-500 rounded-lg p-5 text-white hover:bg-purple-600'
+					onClick={() => addToFavorites(advice)}
 				>
 					Add to Favorites
 				</button>
